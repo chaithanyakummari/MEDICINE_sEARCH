@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLocator - Register</title>
+  <link rel="stylesheet" href="reg.css">
+</head>
+<body>
+  <div class="register-container" id="registerPage">
+    <h2>Create Account</h2>
+    <form id="registerForm">
+
+      <!-- Role Selection -->
+      <label for="role">Select Role</label>
+      <select id="role" name="role" required onchange="toggleForm()">
+        <option value="">-- Choose Role --</option>
+        <option value="user">User</option>
+        <option value="pharmacy">Pharmacy</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <!-- Common Fields -->
+      <div id="common-fields">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <!-- Send OTP Button -->
+        <button id="verifyEmailBtn" type="button" class="send-btn" onclick="showOtpPage()">Verify Email</button>
+
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter password" required>
+      </div>
+
+      <!-- Pharmacy Extra Fields -->
+      <div id="pharmacy-fields" class="hidden">
+        <label for="pharma-name">Pharmacy Name</label>
+        <input type="text" id="pharma-name" name="pharma-name" placeholder="Enter pharmacy name">
+
+        <label for="pharma-license">Pharmacy License ID</label>
+        <input type="text" id="pharma-license" name="pharma-license" placeholder="Enter pharmacy license">
+
+        <label for="is-rural">Is Rural Area?</label>
+        <select id="is-rural" name="is-rural">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="opening-time">Opening Time</label>
+        <input type="time" id="opening-time" name="opening-time">
+
+        <label for="closing-time">Closing Time</label>
+        <input type="time" id="closing-time" name="closing-time">
+        <h6>Address</h6>
+       
+        <input type="text" id="hno" name="hno" placeholder="House No">
+        <input type="text" id="street" name="street" placeholder="Street">
+        <input type="
+        text" id="area" name="area" placeholder="Area">
+        <input type="text" id="city" name="city" placeholder="City">
+        <input type="text" id="state" name="state" placeholder="State">
+        <input type="text" id="pincode" name="pincode" placeholder="Pincode">
+      </div>
+
+      <!-- Register Button -->
+      <button type="submit">Register</button>
+
+      <!-- Login Link -->
+      <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+    </form>
+  </div>
+
+  <!-- OTP Page -->
+  <div class="otp-page hidden" id="otpPage">
+    <h3>Verify Your Mobile</h3>
+    <p>Enter the OTP sent to your phone</p>
+
+    <div class="otp-boxes">
+      <input type="text" maxlength="1" class="otp-input" oninput="moveNext(this,0)">
+      <input type="text" maxlength="1" class="otp-input" oninput="moveNext(this,1)">
+      <input type="text" maxlength="1" class="otp-input" oninput="moveNext(this,2)">
+      <input type="text" maxlength="1" class="otp-input" oninput="moveNext(this,3)">
+      <input type="text" maxlength="1" class="otp-input" oninput="moveNext(this,4)">
+      <input type="text" maxlength="1" class="otp-input" oninput="moveNext(this,5)">
+    </div>
+
+    <button class="verify-btn" onclick="verifyOtp()">Verify OTP</button>
+    <p class="timer">Resend in <span id="timer">45</span> sec</p>
+    <button class="resend-btn" onclick="resendOtp()" disabled>Resend OTP</button>
+
+    <button class="back-btn" onclick="goBack()">Back</button>
+  </div>
+
+  <script src="reg.js"></script>
+</body>
+</html>

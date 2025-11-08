@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLocator | Search Medicine</title>
+  <link rel="stylesheet" href="searchcss.css">
+
+  <!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">MediLocator</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="main.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="main-section">
+
+    <!-- 🔍 Search Bar -->
+
+    <div id="searchBar" class="search-bar">
+      <input type="text" id="medicineInput" placeholder="Search for medicine..." />
+      <button id="searchBtn" class="icon-btn">🔍</button>
+      <button id="locationBtn" class="icon-btn">📍</button>
+    </div>
+
+    <!-- 📍 Popup Box for Location -->
+    <div id="locationBox" class="popup hidden">
+      <div class="popup-content">
+        <h3>📍 Select Location</h3>
+        <h5><p>You can detect automatically or enter manually:</p></h5>
+
+        <button id="detectBtn">Detect My Location</button>
+
+        <h5><p>OR</p></h5>
+
+        <input type="text" id="cityInput" placeholder="Enter city name..." />
+        <button id="manualBtn">Use This City</button>
+
+        <p id="statusMsg"></p>
+      </div>
+    </div>
+ <div class="content">
+  <div class="left-panel" id="pharmacyList"></div>
+  <div class="map" id="map"></div>
+</div>
+
+
+  </section>
+
+  
+  <script src="search.js"></script>
+</body>
+</html>

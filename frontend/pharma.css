@@ -1,0 +1,338 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #007bff;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 12px;
+  margin: 8px 0;
+  background: #0056b3;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background: #003f7f;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.content-section {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.card {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  font-weight: bold;
+}
+
+form { 
+  display: flex;
+   flex-direction: column; 
+   gap: 10px; 
+   margin-right: 80px; 
+  }form input, form textarea, form select, form button
+   {
+     padding: 8px;
+      border: 1px solid #ccc;
+       border-radius: 5px;
+       }
+       form button 
+       {
+         background: #28a745;
+          color: white; 
+          border: none; 
+          cursor: pointer;
+         }
+         form button:hover
+          {
+             background: #218838; 
+            }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+table th, table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.low-stock {
+  background: #ffe6e6;
+}
+/* --- Add Medicine Section Styling --- */
+
+.form-card {
+  background: #ffffff;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-card h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Group spacing and labels */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* Input styling */
+.form-group input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-size: 15px;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+/* Save Button */
+.save-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.save-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #004099);
+  transform: translateY(-2px);
+}
+
+/* Make form responsive */
+@media (max-width: 768px) {
+  .form-card {
+    margin: 20px;
+    padding: 25px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+  }
+}/* --- Profile Section Styling --- */
+.profile-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Section */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.profile-header h2 {
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+/* Edit Icon */
+.edit-icon {
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.edit-icon:hover {
+  background: #007bff;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Details Form */
+.profile-details {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.detail-group {
+  margin-bottom: 18px;
+}
+
+.detail-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.detail-group input,
+.detail-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: all 0.3s ease;
+  resize: none;
+}
+
+.detail-group input:focus,
+.detail-group textarea:focus {
+  background: #fff;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+/* Time Inputs side by side */
+.time-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.time-group div {
+  flex: 1;
+}
+
+.time-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Update Button */
+.update-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.update-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #004099);
+  transform: translateY(-2px);
+}
+
+/* Hidden Class */
+.hidden {
+  display: none;
+}
+
+/* Add smooth fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-card {
+  animation: fadeIn 0.5s ease;
+}
+/* new logic */

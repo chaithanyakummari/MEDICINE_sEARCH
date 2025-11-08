@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLocator - Login</title>
+  <link rel="stylesheet" href="logincss.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <!-- Role Selection -->
+      <label for="role">Select Role</label>
+      <select id="role" name="role" required>
+        <option value="">-- Choose Role --</option>
+        <option value="user">User</option>
+        <option value="pharmacy">Pharmacy</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <!-- Email -->
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <span id="emailError" style="color:red; font-size:0.9em;"></span>
+
+      <!-- Password -->
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <span id="passwordError" style="color:red; font-size:0.9em;"></span>
+
+      <!-- Login Button -->
+      <button type="submit">Login</button>
+
+      <!-- Register Link -->
+      <p class="register-link">Don't have an account? <a href="reg.html">Register</a></p>
+    </form>
+  </div>
+  
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    // Clear old errors
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("passwordError").textContent = "";
+
+    const loginData = {
+        role: document.getElementById("role").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+    };
+
+    try {
+        const response = await fetch("http://localhost:8989/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(loginData)
+        });
+if (response.ok) {
+    const data = await response.json();  // ✅ Parse JSON, not text
+
+    // ✅ Store pharmacyId in sessionStorage
+    if (data.pharmacyId) {
+        sessionStorage.setItem("pharmacyId", data.pharmacyId);
+        console.log("Saved pharmacyId:", data.pharmacyId);
+    } else {
+        console.warn("No pharmacyId found in response:", data);
+    }
+
+    // ✅ Redirect based on role
+    const roleLower = loginData.role.toLowerCase();
+    if (roleLower === "user" || roleLower === "admin") {
+        window.location.href = "search.html";
+    } else if (roleLower === "pharmacy") {
+        window.location.href = "pharma.html";
+    }
+}
+
+        else {
+            const errorText = await response.text();
+
+            // ✅ Show inline error messages
+            if (errorText.toLowerCase().includes("password")) {
+                document.getElementById("passwordError").textContent = "Incorrect password!";
+            } else if (errorText.toLowerCase().includes("email") || errorText.toLowerCase().includes("not found")) {
+                document.getElementById("emailError").textContent = "No account found with this email!";
+            } else {
+                document.getElementById("passwordError").textContent = "Login failed. Try again.";
+            }
+        }
+    } catch (err) {
+        // ✅ Handle server connection error
+        document.getElementById("passwordError").textContent = "Cannot connect to server!";
+        console.error(err);
+    }
+});
+</script>
+</body>
+</html>

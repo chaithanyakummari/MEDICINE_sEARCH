@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacy Dashboard</title>
+  <link rel="stylesheet" href="pharma.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>MediLocator</h2>
+      <ul>
+        <li onclick="showDashBoardSection()">🏠 Dashboard</li>
+        <li onclick="showSection('add-medicine')">➕ Add Medicine</li>
+        <li onclick="showStockSection()">📦 Stock Management</li>
+        <li onclick="showProfileSection()">👤 Profile</li>
+        <li onclick="logout()">🚪 Logout</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Dashboard Overview -->
+      <section id="dashboard" class="content-section">
+        <h2>Dashboard Overview</h2>
+        <div class="cards">
+          <div class="card" id="totalMedicines">
+            <h2>
+Total Medicines: 
+          </h2>
+            <span id="totalMedicines"></span></div>
+          <div class="card" id="lowStock"><h2>Low Stock:</h2> <span id="lowStock"></span></div>
+          <div class="card" id="expiredMedicines"><h2>Expired: </h2><span id="expiredMedicines"></span></div>
+
+
+          <div class="card"></div>
+        </div>
+      </section>
+
+      
+      <!-- Add Medicine -->
+<section id="add-medicine" class="content-section hidden">
+  <div class="form-card">
+    <h2>Add New Medicine</h2>
+    <form id="medicineForm">
+      <div class="form-group">
+        <label>Medicine Name</label>
+        <input type="text" id="medName" required>
+      </div>
+
+      <div class="form-group">
+        <label>Type</label>
+        <input type="text" id="medCategory" placeholder="Tablet, Syrup..." required>
+      </div>
+
+      <div class="form-group">
+        <label>Stock</label>
+        <input type="number" id="medQty" required>
+      </div>
+
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" id="medPrice" required>
+      </div>
+
+      <div class="form-group">
+        <label>Expiry Date</label>
+        <input type="date" id="medExpiry" required>
+      </div>
+
+      <div class="form-group">
+        <label>Alternative Medicine</label>
+        <input type="text" id="medalt" required>
+      </div>
+
+      <div class="form-group">
+        <label>Salt Composition</label>
+        <input type="text" id="salt" required>
+      </div>
+
+      <div class="form-group">
+        <label>Batch Number</label>
+        <input type="text" id="batchNo" required>
+      </div>
+
+      <button type="submit" class="save-btn">💾 Save Medicine</button>
+    </form>
+  </div>
+</section>
+
+
+      <!-- Stock Management -->
+      <section id="stock" class="content-section hidden">
+        <h2>Stock Management</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Batch No</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Expiry</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="stockTable">
+            <tr>
+              
+            </tr>
+            <tr class="low-stock">
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Profile -->
+ <!-- Profile Section -->
+<section id="profile" class="content-section hidden">
+  <div class="profile-card">
+    <div class="profile-header">
+      <h2 id="pharmacyName">🏥 </h2>
+      <span class="edit-icon" onclick="toggleEditMode()">✏️ Edit</span>
+    </div>
+
+    <div class="profile-details">
+      <form id="profileForm">
+        <div class="detail-group">
+          <label>License ID:</label>
+          <input type="text" id="license" value="" readonly>
+        </div>
+
+        <div class="detail-group">
+          <label>Address:</label>
+          <textarea id="address" readonly> </textarea>
+        </div>
+
+        <div class="detail-group">
+          <label>Phone:</label>
+          <input type="text" id="phone" value="" readonly>
+        </div>
+
+        <div class="detail-group">
+          <label>Email:</label>
+          <input type="email" id="email" value="" readonly>
+        </div>
+        
+        <!-- <div class="detail-group">
+          <label>Password</label>
+          <input type="password" id="password" value="" readonly>
+        </div> -->
+
+        <div class="time-group">
+          <div>
+            <label>Opening Time:</label>
+            <input type="time" id="openTime" value="" readonly>
+          </div>
+          <div>
+            <label>Closing Time:</label>
+            <input type="time" id="closeTime" value="" readonly>
+          </div>
+        </div>
+
+        <button type="submit" id="updateBtn" class="update-btn hidden">💾 Update Profile</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <script src="pharma.js"></script>
+</body>
+</html>
